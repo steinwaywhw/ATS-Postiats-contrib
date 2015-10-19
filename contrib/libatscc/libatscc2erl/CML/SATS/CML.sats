@@ -8,6 +8,13 @@
 ATS_EXTERN_PREFIX "ats2erlcml_cml_"
 //
 (* ****** ****** *)
+local
+//
+#include "share/atspre_define.hats"
+//
+in
+  staload "{$LIBATSCC2ERL}/basics_erl.sats"
+end // end of [local]
 
 abstype thread_id
 typedef tid = thread_id

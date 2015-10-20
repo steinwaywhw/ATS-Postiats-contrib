@@ -54,6 +54,8 @@ channel{a:t@ype}(): chan(a) = "mac#%"
 //
 fun recv{a:t@ype} (ch: chan(a)): a = "mac#%"
 fun send{a:t@ype} (ch: chan(a), x: a): void = "mac#%"
+
+fun getc(): void = "mac#%"
 //
 (* ****** ****** *)
 

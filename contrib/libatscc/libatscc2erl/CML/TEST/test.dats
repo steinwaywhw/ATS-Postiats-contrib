@@ -13,6 +13,7 @@
 -compile(nowarn_unused_vars).
 -compile(nowarn_unused_function).
 -compile(debug_info).
+-compile(export_all).
 %%
 -export([ats2erlcml_cml_channel/0]).
 -export([ats2erlcml_cml_spawn/1]).
@@ -28,21 +29,12 @@ staload "./../../basics_erl.sats"
 staload CML="../SATS/CML.sats"
 
 
-
-
-//
-(* ****** ****** *)
-//
-extern
-fun
-primes{n:nat} : (int(n)) -> list(int, n)
-//
 (* ****** ****** *)
 
 stadef chan = $CML.chan
 
 (* ****** ****** *)
-//
+
 fun counter(n: int) = let
   val outCh = $CML.channel{int}()
   fun loop(n: int): void = ($CML.send(outCh, n); loop(n+1))
@@ -50,7 +42,7 @@ fun counter(n: int) = let
 in
   outCh
 end // end of [counter]
-//
+
 (* ****** ****** *)
 
 fun filter (p: int, inCh: chan(int)) : chan(int) = let
@@ -94,7 +86,8 @@ implement main0_erl () = () where {
 	val chan = sieve()
 	fun loop (): void = let 
 		val p = $CML.recv(chan)
-		val _ = println! p 
+		val _ = println! p
+		val _ = $CML.getc() 
 	in 
 		loop()
 	end 

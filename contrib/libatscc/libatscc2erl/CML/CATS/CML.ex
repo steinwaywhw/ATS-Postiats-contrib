@@ -38,6 +38,7 @@ defmodule Channel do
 	def channel_send(channel, msg) do
 		send channel, {:send, self(), msg}
 		receive do 
+			{:ack} -> nil
 		end
 	end
 

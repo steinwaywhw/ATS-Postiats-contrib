@@ -35,13 +35,13 @@ defmodule Channel do
 		spawn fn -> channel_task() end
 	end
 
-	def channel_send(channel, msg, name) do
+	def channel_send(channel, msg) do
 		send channel, {:send, self(), msg}
 		receive do 
 		end
 	end
 
-	def channel_recv(channel, name) do 
+	def channel_recv(channel) do 
 		send channel, {:recv, self()}
 		receive do 
 			{msg} -> 

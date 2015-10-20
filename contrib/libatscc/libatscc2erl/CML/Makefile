@@ -2,6 +2,8 @@
 
 
 all:
+	cd CATS && rm -f *.beam
+	cd TEST && rm -f *.beam
 	cd CATS && elixirc CML.ex 
 	cd TEST && patsopt --tlcalopt-disable -d test.dats | atscc2erl -o test_dats.erl 
 	cd TEST && erlc test_dats.erl 

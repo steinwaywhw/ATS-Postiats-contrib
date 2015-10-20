@@ -12,7 +12,10 @@
 %%
 -compile(nowarn_unused_vars).
 -compile(nowarn_unused_function).
+-compile(debug_info).
 %%
+-export([ats2erlcml_cml_channel/0]).
+-export([ats2erlcml_cml_spawn/1]).
 -include("./../../libatscc2erl_all.hrl").
 -include("./../CATS/CML.hrl").
 %%

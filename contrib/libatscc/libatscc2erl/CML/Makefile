@@ -6,6 +6,9 @@ all:
 	cd TEST && patsopt --tlcalopt-disable -d test.dats | atscc2erl -o test_dats.erl 
 	cd TEST && erlc test_dats.erl 
 
+.PHONY: test 
+test:
+	erl -pz TEST/ CATS/
 
 # Elixir.Channel.beam: CATS/CML.ex
 # 	cd CATS && elixirc CML.ex 
